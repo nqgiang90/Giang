@@ -1,0 +1,41 @@
+.carousel {
+  padding-top: 54px;
+}
+
+.carousel h1 {
+  margin-bottom: 27px;
+}
+
+.carousel__content {
+  padding: 100px 50px 20px 90px;
+  background-color: #ffbb64;
+
+  h3 {
+    @extend .font-roboto;
+    @include fontSize(36px);
+    margin-bottom: 50px;
+  }
+}
+
+.carousel__img{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.carousel__buttons {
+  margin-top: 40px;
+
+  .btn {
+    height: 35px;
+
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+
+  .btn__main__hotline {
+    background: #fff;
+    color: #f36d25;
+    border-color: #f36d25;
+  }
+}

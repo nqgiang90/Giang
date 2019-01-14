@@ -1,0 +1,26 @@
+.intro {
+  padding: 63px 0;
+  background: url('../../assets/intro/intro-bg.png') no-repeat center center;
+  background-size: cover;
+
+  .intro__content {
+    padding-top: 20px;
+
+    h2 {
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 35px;
+    }
+
+    .btn-normal {
+      text-transform: uppercase;
+      width: 346px;
+      height: 47px;
+      @include fontSize(20px);
+      line-height: 34px;
+
+    }
+  }
+}

@@ -1,0 +1,49 @@
+.feature {
+  padding-top: 100px;
+
+  .row {
+    margin-bottom: 50px;
+
+    &:last-child {
+      .line {
+        width: 80%;
+      }
+    }
+  }
+
+  h3 {
+    @extend .font-roboto;
+    @include fontSize(29px);
+    color: #343434;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .media {
+    margin-bottom: 30px;
+  }
+
+  ul > li, p {
+    @extend .font-roboto;
+    @include fontSize(20px);
+    color: #343434;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  ul > li {
+    margin-bottom: 10px;
+  }
+
+  .feature__buttons {
+    margin-top: 50px;
+
+    .btn {
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
+  }
+}

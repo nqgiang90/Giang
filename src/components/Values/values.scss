@@ -1,0 +1,36 @@
+.values {
+  padding: 53px 0 0 0;
+
+  .line {
+    width: 80%;
+  }
+}
+
+.values__content {
+  margin: 53px auto 0;
+
+  .media {
+    margin-bottom: 60px;
+  }
+
+  .media .media-body {
+    @include fontSize(19px);
+
+    h5 {
+      @include fontSize(29px);
+      font-weight: 300;
+      margin-bottom: 31px;
+      padding-top: 10px;
+    }
+  }
+
+  @media (max-width: 1600px) {
+    .media .media-body {
+      @include fontSize(14px);
+  
+      h5 {
+        @include fontSize(25px);
+      }
+    }
+  }
+}
