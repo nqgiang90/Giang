@@ -20,6 +20,13 @@
 .carousel__img{
   padding-left: 0;
   padding-right: 0;
+  position: relative;
+
+  .carousel__voice_demo_link {
+    position: relative;
+    bottom: 120px;
+    left: 40%;
+  }
 }
 
 .carousel__buttons {

@@ -4,9 +4,8 @@
     <div class="row">
       <div class="col-md-6">
         <div class="intro__content">
-          <h2>AI Call Center</h2>
-          <p>AI Call Center là tổng đài thông minh, giúp Bạn giải quyết khối lượng lớn cuộc gọi có kịch bản trong thời gian ngắn. Hệ thống tổng đài của Bạn sẽ hoạt động hiệu quả hơn và tiết kiệm chi phí.
-          </p>
+          <h2>VBEE AI Call Center</h2>
+          <p>VBEE AI Call Center là giải pháp tích hợp vào các hệ thống tổng đài. Giải pháp chủ động giải quyết khối lượng lớn cuộc gọi có kịch bản trong thời gian ngắn. Hệ thống tổng đài sẽ hoạt động năng suất hơn, hiệu quả hơn và tiết kiệm chi phí.</p>
           <a href="#" class="btn btn-normal btn-white">Đăng ký sử dụng</a>
         </div>
       </div>

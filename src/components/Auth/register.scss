@@ -1,0 +1,46 @@
+.register {
+  padding-top: 54px;
+  padding-bottom: 54px;
+
+  h1, h3 {
+    color: #000;
+    margin-bottom: 12px;
+    text-align: center;
+    font-size: 33px;
+  }
+
+  h3 {
+    font-size: 17px;
+  }
+  
+  .btn_register {
+    margin: 0 auto;
+    display: block;
+    background-color: #f2c94c;
+    border-color: #f2c94c;
+    border-radius: 0;
+    color: #040404;
+  }
+
+  .error {
+    background: #ff8a00;
+
+    ul {
+      padding-left: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      li {
+        margin-bottom: 5px;
+        color: #fff;
+      }
+    }
+  }
+
+  .success {
+    padding: 5px 0;
+    P {
+      font-size: 18px;
+    }
+  }
+}

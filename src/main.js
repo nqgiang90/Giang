@@ -4,7 +4,11 @@ import './plugins/bootstrap-vue'
 import './plugins/bootstrap-vue'
 import VueYoutube from 'vue-youtube'
 var VueScrollTo = require('vue-scrollto')
+import Aplayer from 'vue-aplayer'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
+import router from './router'
 
 Vue.use(VueScrollTo, {
   container: "body",
@@ -20,10 +24,13 @@ Vue.use(VueScrollTo, {
   y: true
 })
 
-Vue.use(VueYoutube)
+Vue.use(ElementUI);
+Vue.use(VueYoutube);
+Vue.use(Aplayer);
 
 Vue.config.productionTip = false
 
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app')

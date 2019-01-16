@@ -27,11 +27,14 @@
       display: block;
       line-height: 40px;
       margin-right: 20px;
-      color: #040404;
+      color: #fff;
       font-size: 18px;
+      background: #ff8a00;
+      padding-left: 15px;
+      padding-right: 15px;
 
       &:hover {
-        font-weight: 700;
+        opacity: 0.8;
       }
     }
 

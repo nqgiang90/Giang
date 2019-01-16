@@ -7,5 +7,5 @@ module.exports = {
         path.resolve(__dirname, 'src/styles/common/*.scss'),
       ]
     }
-  }
+  },
 }

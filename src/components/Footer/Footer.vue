@@ -1,18 +1,19 @@
 <template>
   <div class="footer">
+    <div class="box_call">
+      <a href="tel:0965277888">
+        <img src="../../assets/footer/call_btn.png" alt=""/>
+      </a>
+    </div>
     <img class="footer__logo" src="../../assets/footer/footer-logo.png" alt="footer logo"/>
     <div class="container">
-      <div class="footer-top">
-        <div class="row">
-          <div class="col" v-for="(item, index) in items" :key="index">
-            <h3>{{item.heading}}</h3>
-            <ul>
-              <li v-for="(link, i) in item.links" :key="i">
-                <a :href="link.url">{{link.text}}</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <!-- <div class="footer-top">
+        <ul class="nav justify-content-end footer-bottom__navbar">
+            <b-nav-item v-scroll-to="'#values'">Giá trị</b-nav-item>
+            <b-nav-item v-scroll-to="'#feature'">Tính năng</b-nav-item>
+            <b-nav-item v-scroll-to="'#carousel'">Lĩnh vực</b-nav-item>
+            <b-nav-item v-scroll-to="'#partners'">Case study</b-nav-item>
+        </ul>
 
         <ul class="nav justify-content-end footer-top__nav">
           <li class="nav-item" v-for="(item, i) in navTopItems" :key="i">
@@ -20,12 +21,13 @@
             <a class="nav-link footer-top__nav__phone" :href="item.url" v-else>{{item.text}}</a>
           </li>
         </ul>
-      </div>
+      </div> -->
       <div class="footer-bottom">
-        <ul class="nav justify-content-end footer-bottom__nav">
-          <li class="nav-item" v-for="(item, i) in navBottomItems" :key="i">
-            <a class="nav-link" :href="item.url">{{item.text}}</a>
-          </li>
+        <ul class="nav justify-content-end footer-bottom__navbar">
+            <b-nav-item v-scroll-to="'#values'">Giá trị</b-nav-item>
+            <b-nav-item v-scroll-to="'#feature'">Tính năng</b-nav-item>
+            <b-nav-item v-scroll-to="'#carousel'">Lĩnh vực</b-nav-item>
+            <b-nav-item v-scroll-to="'#partners'">Case study</b-nav-item>
         </ul>
         <ul class="nav justify-content-end footer-bottom__social__nav">
           <li class="nav-item" v-for="(item, i) in navSocialLinks" :key="i">
@@ -49,6 +51,24 @@ import y from '../../assets/footer/y.png';
 export default {
   data() {
     return {
+      footerNavBar: [
+        {
+          text: 'Giá trị',
+          url: '#values'
+        },
+        {
+          text: 'Tính năng',
+          url: '#features'
+        },
+        {
+          text: 'Lĩnh vực',
+          url: '#carousel'
+        },
+        {
+          text: 'Đối tác',
+          url: '#partners'
+        }
+      ],
       navTopItems: [
         {
           text: "Hỗ trợ",
@@ -113,151 +133,7 @@ export default {
           img: w
         },
       ],
-      items: [
-        {
-          heading: "Tính năng",
-          links: [
-            {
-              text: "Tổng đài AI",
-              url: "#"
-            },
-            {
-              text: "Vbee on-premises",
-              url: "#"
-            },
-            {
-              text: "Vbee Cloud",
-              url: "#"
-            },
-            {
-              text: "VAIS Vietnamese Speech to text",
-              url: "#"
-            },
-            {
-              text: "Xử lý số liệu",
-              url: "#"
-            }
-          ]
-        },
-        {
-          heading: "lĩnh vực sử dụng",
-          links: [
-            {
-              text: "API Vbee Text to speech",
-              url: "#"
-            },
-            {
-              text: "API báo nói",
-              url: "#"
-            },
-            {
-              text: "API sách nói",
-              url: "#"
-            },
-            {
-              text: "API thời tiết",
-              url: "#"
-            },
-            {
-              text: "API tổng đài AI",
-              url: "#"
-            },
-            {
-              text: "API VAIS Speech to text",
-              url: "#"
-            },
-            {
-              text: "API xác thực qua voice",
-              url: "#"
-            }
-          ]
-        },
-        {
-          heading: "Use case",
-          links: [
-            {
-              text: "Thương mại điện tử",
-              url: "#"
-            },
-            {
-              text: "Vận tải",
-              url: "#"
-            },
-            {
-              text: "Tổng đài tự động",
-              url: "#"
-            },
-            {
-              text: "Ngân hàng",
-              url: "#"
-            },
-            {
-              text: "Giáo án điện tử",
-              url: "#"
-            },
-            {
-              text: "Nội dung tự động",
-              url: "#"
-            }
-          ]
-        },
-        {
-          heading: "Báo giá",
-          links: [
-            {
-              text: "Cổ đông sáng lập",
-              url: "#"
-            },
-            {
-              text: "Giới thiệu Vbee",
-              url: "#"
-            },
-            {
-              text: "Vbee Profile",
-              url: "#"
-            },
-            {
-              text: "Báo chí & Cộng đồng",
-              url: "#"
-            }
-          ]
-        },
-        {
-          heading: "Blog",
-          links: [
-            {
-              text: "Tiêu điểm Vbee",
-              url: "#"
-            },
-            {
-              text: "Text to speech",
-              url: "#"
-            },
-            {
-              text: "Góc lập trình",
-              url: "#"
-            }
-          ]
-        },
-        {
-          heading: "Liên hệ",
-          links: [
-            {
-              text: "Tiêu điểm Vbee",
-              url: "#"
-            },
-            {
-              text: "Text to speech",
-              url: "#"
-            },
-            {
-              text: "Góc lập trình",
-              url: "#"
-            }
-          ]
-        }
-      ]
-    };
+    }
   },
   name: "Footer"
 };
