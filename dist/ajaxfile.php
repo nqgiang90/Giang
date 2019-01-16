@@ -1,8 +1,6 @@
 <?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-var_dump(1);
-exit();
-include "config.php";
+
 
 $data = json_decode(file_get_contents("php://input"));
 
@@ -104,63 +102,64 @@ if($request == 2){
 	  $result['err'][] = 'Số điện thoại không hợp lệ';
   }
   
-  $stmt = $con->prepare("SELECT * FROM users WHERE phone = ?");
-  $stmt->bind_param("s", $data->phone);
-  $stmt->execute();
-  $stmt->store_result();
+  //$stmt = $con->prepare("SELECT * FROM users WHERE phone = ?");
+//  $stmt->bind_param("s", $data->phone);
+//   $stmt->execute();
+//   $stmt->store_result();
   
-  $row_cnt = $stmt->num_rows;
+//   $row_cnt = $stmt->num_rows;
   
-  if($row_cnt > 0) {
-	  $result['err'][] = 'Số điện thoại đã tồn tại';
-  }
+//   if($row_cnt > 0) {
+// 	  $result['err'][] = 'Số điện thoại đã tồn tại';
+//   }
   
 		
 if (!filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
 	$result['err'][] = 'Email không đúng định dạng';
 } 
 
-  $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
-  $stmt->bind_param("s", $data->email);
-  $stmt->execute();
-  $stmt->store_result();
+//   $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
+//   $stmt->bind_param("s", $data->email);
+//   $stmt->execute();
+//   $stmt->store_result();
   
-  $row_cnt = $stmt->num_rows;
+//   $row_cnt = $stmt->num_rows;
   
-  if($row_cnt > 0) {
-	  $result['err'][] = 'Email đã tồn tại';
-  }
-  
-  if(count($result['err']) > 0) {
-	  print_r(json_encode($result));
-  } else {
-	  $stmt = $con->prepare("INSERT INTO users (name, email, phone, congty, tongdai) VALUES (?, ?, ?, ?, ?)");
-	  $stmt->bind_param("sssss", $name, $email, $phone, $congty, $tongdai);
+//   if($row_cnt > 0) {
+// 	  $result['err'][] = 'Email đã tồn tại';
+//   }
+   sendMessage($chatid, $message, $token);
+	
+//   if(count($result['err']) > 0) {
+// 	  print_r(json_encode($result));
+//   } else {
+// 	  $stmt = $con->prepare("INSERT INTO users (name, email, phone, congty, tongdai) VALUES (?, ?, ?, ?, ?)");
+// 	  $stmt->bind_param("sssss", $name, $email, $phone, $congty, $tongdai);
 	  
-	  $name = $data->name;
-	  $email = $data->email;
-	  $phone = $data->phone;
-	  $congty = $data->congty;
-	  $tongdai = $data->tongdai;
+// 	  $name = $data->name;
+// 	  $email = $data->email;
+// 	  $phone = $data->phone;
+// 	  $congty = $data->congty;
+// 	  $tongdai = $data->tongdai;
 
-	  $sql = $stmt->execute();
+// 	  $sql = $stmt->execute();
 	  
-	  if ($sql) {
-		  $time = date("H:i:s A d-m-Y");
-		  $message .= "Thông tin khách hàng đăng ký qua trang chủ \n";
-		  $message .= "Thời gian : $time \n \n";
-		  $message .= "Tên tổng đài : $tongdai \n";
-		  $message .= "Tên công ty : $congty \n";
-		  $message .= "Họ tên : $name \n";
-		  $message .= "Email : $email \n";
-		  $message .= "SĐT : $phone \n";
-	  }
-	  sendMessage($chatid, $message, $token);
-  }
+// 	  if ($sql) {
+// 		  $time = date("H:i:s A d-m-Y");
+// 		  $message .= "Thông tin khách hàng đăng ký qua trang chủ \n";
+// 		  $message .= "Thời gian : $time \n \n";
+// 		  $message .= "Tên tổng đài : $tongdai \n";
+// 		  $message .= "Tên công ty : $congty \n";
+// 		  $message .= "Họ tên : $name \n";
+// 		  $message .= "Email : $email \n";
+// 		  $message .= "SĐT : $phone \n";
+// 	  }
+// 	  sendMessage($chatid, $message, $token);
+//   }
   
   
-$stmt->close();
-$con->close();
+// $stmt->close();
+// $con->close();
   exit;
 }
 
