@@ -11,7 +11,8 @@
         </b-navbar-brand> -->
 
         <b-collapse is-nav id="nav_collapse">
-          <b-navbar-nav class="mx-auto">
+          <b-navbar-nav class="mx-auto"> 
+            <b-nav-item><router-link to="/">Trang chủ</router-link></b-nav-item>
             <b-nav-item v-scroll-to="'#values'">Giá trị</b-nav-item>
             <b-nav-item v-scroll-to="'#feature'">Tính năng</b-nav-item>
             <b-nav-item v-scroll-to="'#carousel'">Lĩnh vực</b-nav-item>
