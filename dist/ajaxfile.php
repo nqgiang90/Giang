@@ -1,6 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-
+var_dump(1);
+exit();
 include "config.php";
 
 $data = json_decode(file_get_contents("php://input"));
