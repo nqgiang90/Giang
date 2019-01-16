@@ -127,8 +127,23 @@ if (!filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
   
 //   if($row_cnt > 0) {
 // 	  $result['err'][] = 'Email đã tồn tại';
-//   }
+//   }	
+	$name = $data->name;
+	  $email = $data->email;
+	  $phone = $data->phone;
+	  $congty = $data->congty;
+	  $tongdai = $data->tongdai;
+	$time = date("H:i:s A d-m-Y");
+		  $message = "Thông tin khách hàng đăng ký qua trang chủ \n";
+		  $message .= "Thời gian : $time \n \n";
+		  $message .= "Tên tổng đài : $tongdai \n";
+		  $message .= "Tên công ty : $congty \n";
+		  $message .= "Họ tên : $name \n";
+		  $message .= "Email : $email \n";
+		  $message .= "SĐT : $phone \n";
+	
    sendMessage($chatid, $message, $token);
+	var_dump($message);
 	
 //   if(count($result['err']) > 0) {
 // 	  print_r(json_encode($result));
