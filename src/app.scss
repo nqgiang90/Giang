@@ -2,6 +2,10 @@
 
 body {
   padding-top: 70px;
+
+  @media (max-width: 991.98px) {
+    padding-top: 0;
+  }
 }
 
 #app {
@@ -134,4 +138,34 @@ p {
   width: 30%;
   border-bottom: 1px solid #515151;
   padding-top: 50px;
+}
+
+.bm-burger-button {
+  top: 15px;
+}
+
+.bm-menu {
+  nav.bm-item-list {
+    margin-left: 0;
+    a {
+      cursor: pointer;
+      font-size: 16px;
+      @extend .font-roboto;
+      text-align: center;
+
+      span {
+        text-align: center;
+        width: 100%;
+        margin-left: 0;
+      }
+    
+      &:hover {
+        background: #ff8a00;
+
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
 }

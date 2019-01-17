@@ -13,6 +13,7 @@
     "element-ui": "^2.4.11",
     "vue": "^2.5.21",
     "vue-aplayer": "^1.6.1",
+    "vue-burger-menu": "^2.0.0",
     "vue-easy-slider": "^5.2.7",
     "vue-router": "^3.0.2",
     "vue-scrollto": "^2.13.0"
