@@ -2,7 +2,14 @@
   padding: 63px 0;
   background: url('../../assets/intro/intro-bg.png') no-repeat center center;
   background-size: cover;
-
+.container{
+  iframe{
+    width: 100% !important;
+  }
+}
+  .left-intro{
+    padding-right: 15px;
+  }
   .intro__content {
     padding-top: 20px;
 
@@ -12,6 +19,7 @@
 
     p {
       margin-bottom: 35px;
+      text-align: justify;
     }
 
     .btn-normal {
@@ -23,4 +31,27 @@
 
     }
   }
+}
+@media (max-width: 768px) {
+  .intro__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+
+    .btn-normal{
+      width: auto !important;
+    }
+    h2{
+      font-size: 24px;
+    }
+  }
+  .left-intro{
+    padding-left: 15px;
+  }
+  .right-intro{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
 }
