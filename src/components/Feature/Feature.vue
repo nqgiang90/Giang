@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row" v-for="(item, i) in items" :key="i">
         <template v-if="(isEvenNumber(i))">
-          <div class="col-md-5">
+          <div class="col-md-5 box-img">
             <img class="img-fluid" :src="item.img" :alt="item.title">
           </div>
           <div class="col-md-7">
@@ -76,7 +76,7 @@
               <a class="btn text-uppercase btn__main btn__main__hotline" href="tel:0965277888">HOTLINE: 0965 277 888</a>
             </div>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-5 box-img">
             <img class="img-fluid" :src="item.img" :alt="item.title">
           </div>
         </template>
