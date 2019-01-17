@@ -34,3 +34,10 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .media{
+    display: flex;
+    align-items: center !important;
+  }
+
+}

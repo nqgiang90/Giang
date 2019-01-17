@@ -5,7 +5,6 @@
         <img src="../../assets/footer/call_btn.png" alt=""/>
       </a>
     </div>
-    <img class="footer__logo" src="../../assets/footer/footer-logo.png" alt="footer logo"/>
     <div class="container">
       <!-- <div class="footer-top">
         <ul class="nav justify-content-end footer-bottom__navbar">
@@ -27,7 +26,7 @@
             <b-nav-item v-scroll-to="'#values'">Giá trị</b-nav-item>
             <b-nav-item v-scroll-to="'#feature'">Tính năng</b-nav-item>
             <b-nav-item v-scroll-to="'#carousel'">Lĩnh vực</b-nav-item>
-            <b-nav-item v-scroll-to="'#partners'">Case study</b-nav-item>
+            <b-nav-item v-scroll-to="'#partners'">Đối tác</b-nav-item>
         </ul>
         <ul class="nav justify-content-end footer-bottom__social__nav">
           <li class="nav-item" v-for="(item, i) in navSocialLinks" :key="i">
@@ -37,6 +36,7 @@
             </a>
           </li>
         </ul>
+        <img class="footer__logo" src="../../assets/footer/footer-logo.png" alt="footer logo"/>
       </div>
     </div>
   </div>
