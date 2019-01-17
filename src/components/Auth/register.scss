@@ -43,4 +43,13 @@
       font-size: 18px;
     }
   }
+
+  @media (max-width: 1024px) {
+    padding-top: 90px;
+    padding-bottom: 0;
+
+    .register__box {
+      margin-bottom: 20px;
+    }
+  }
 }

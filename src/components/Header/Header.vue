@@ -45,14 +45,14 @@
           </div>
 
           <div class="col">          
-              <router-link to="/" class="navbar-brand mx-auto"><img src="../../assets/logo.png" alt="AI Call logo"><span>VEBEE</span> AI Call Center</router-link>
+              <router-link to="/" class="navbar-brand mx-auto"><img src="../../assets/logo.png" alt="AI Call logo"></router-link>
           </div>
 
-          <!-- <div class="col">
+          <div class="col">
             <div class="navbar__useraction">
             <router-link to="register">Đăng ký</router-link>
             </div>
-          </div> -->
+          </div>
         </div>
         
     </div>

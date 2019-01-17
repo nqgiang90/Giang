@@ -5,7 +5,7 @@
       <el-carousel height="500px" :autoplay="false" :interval="5000">
         <el-carousel-item v-for="(item, i) in list" :key="i">
           <div class="row">
-            <div class="col-md-7 carousel__content">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-7 carousel__content">
               <h3>{{item.title}}</h3>
               <p>{{item.text}}</p>
 
@@ -18,7 +18,7 @@
               </div>
             </div>
 
-            <div class="col-md-5 carousel__img">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-5 carousel__img">
               <img :src="item.img" :alt="item.text">
             </div>
           </div>

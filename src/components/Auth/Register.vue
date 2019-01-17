@@ -2,7 +2,7 @@
   <div class="register">
     <div class="container">
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-xs-12 col-sm-12 col-md-7 register__box">
           <h1>Đăng ký AI Call Center</h1>
           <h3>Trải nghiệm tổng đài tự động</h3>
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
@@ -81,7 +81,7 @@
           </b-form>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-xs-12 col-sm-12 col-md-5">
           <img src="../../assets/register/robo.png" alt="" class="img-fluid"/>
         </div>
       </div>

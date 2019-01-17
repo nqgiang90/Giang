@@ -15,6 +15,36 @@
     @include fontSize(36px);
     margin-bottom: 50px;
   }
+
+  @media (max-width: 767.98px) {
+    padding: 20px 80px 20px 80px;
+
+    h3 {
+      @include fontSize(25px);
+      margin-bottom: 30px;
+    }
+
+    p {
+      @include fontSize(16px);
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    padding: 20px 40px 20px 40px;
+
+    h3 {
+      @include fontSize(35px);
+      margin-bottom: 30px;
+    }
+
+    p {
+      @include fontSize(18px);
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    padding: 40px 60px;
+  }
 }
 
 .carousel__img{
@@ -26,6 +56,13 @@
     position: relative;
     bottom: 120px;
     left: 40%;
+  }
+
+  @media (max-width: 767.98px) {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 }
 
@@ -44,5 +81,48 @@
     background: #fff;
     color: #f36d25;
     border-color: #f36d25;
+  }
+
+  @media (max-width: 767.98px) {
+    text-align: center;
+
+    .btn {
+      &:first-child {
+        margin-right: 0;
+      }
+    }
+    .btn__main {
+      width: 200px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    
+    .btn__main__hotline {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    text-align: center;
+    .btn {
+      &:first-child {
+        margin-right: 0;
+      }
+    }
+
+    .btn__main {
+      width: 220px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    text-align: center;
+    .btn__main {
+      width: 200px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
   }
 }
