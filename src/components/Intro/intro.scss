@@ -23,6 +23,7 @@
     p {
       margin-bottom: 35px;
       text-align: justify;
+      @include fontSize(20px);
     }
 
     .btn-normal {
@@ -47,6 +48,10 @@
     }
     h2{
       font-size: 24px;
+      font-weight: bold;
+    }
+    p {
+      @include fontSize(18px);
     }
   }
   .left-intro{

@@ -33,11 +33,21 @@
       }
     }
   }
-}
-@media (max-width: 768px) {
-  .media{
-    display: flex;
-    align-items: center !important;
-  }
 
+  @media (max-width: 768px) {
+    .media{
+      display: flex;
+      align-items: center !important;
+  
+      .media-body {
+        text-align: justify;
+        h5 {
+          margin-bottom: 15px;
+          text-align: left;
+          @include fontSize(24px);
+        }
+      }
+    }
+  
+  }
 }

@@ -5,24 +5,25 @@
   @media (max-width: 991.98px) {
     .bm-burger-button {
       top: 15px !important;
+      z-index: 999999 !important;
     }
     .navbar {
       display: none;
     }
     .mobile_navbar {
+      z-index: 999 !important;
       display: block;
       height: 60px;
       position: fixed;
       background: #fff;
       width: 100%;
-      z-index: 9999;
       overflow: hidden;
 
       .navbar-brand {
         display: block;
         color: #000;
         font-size: 16px;
-        text-align: center;
+        text-align: left;
         padding-right: 25px;
 
         span {

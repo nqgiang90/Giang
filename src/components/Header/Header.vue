@@ -25,10 +25,24 @@
         </b-collapse>
       </b-navbar>
     </div>
+     <Slide width="130" noOverlay>
+      <a id="giatri" v-scroll-to="'#values'">
+        <span>Giá trị</span>
+      </a>
+      <a id="tinhnang" v-scroll-to="'#feature'">
+        <span>Tính năng</span>
+      </a>
+      <a id="lihvuc" v-scroll-to="'#carousel'">
+        <span>Lĩnh vực</span>
+      </a>
+      <a id="doitac" v-scroll-to="'#partners'">
+        <span>Đối tác</span>
+      </a>
+    </Slide>
     <div class="mobile_navbar">
         <div class="row">
           <div class="col">
-            <Slide width="200">
+            <!-- <Slide width="100">
               <a id="giatri" v-scroll-to="'#values'">
                 <span>Giá trị</span>
               </a>
@@ -41,7 +55,7 @@
               <a id="doitac" v-scroll-to="'#partners'">
                 <span>Đối tác</span>
               </a>
-            </Slide>
+            </Slide> -->
           </div>
 
           <div class="col">          
