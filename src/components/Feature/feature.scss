@@ -27,6 +27,7 @@
     @extend .font-roboto;
     @include fontSize(20px);
     color: #343434;
+    text-align: justify;
   }
 
   p {
@@ -52,6 +53,9 @@
 @media (max-width: 768px) {
   .feature{
     padding-top: 30px;
+  }
+  ul li {
+    text-align: justify;
   }
   .feature__mobile__items {
     margin-bottom: 40px;
