@@ -6,21 +6,6 @@
       </a>
     </div>
     <div class="container">
-      <!-- <div class="footer-top">
-        <ul class="nav justify-content-end footer-bottom__navbar">
-            <b-nav-item v-scroll-to="'#values'">Giá trị</b-nav-item>
-            <b-nav-item v-scroll-to="'#feature'">Tính năng</b-nav-item>
-            <b-nav-item v-scroll-to="'#carousel'">Lĩnh vực</b-nav-item>
-            <b-nav-item v-scroll-to="'#partners'">Case study</b-nav-item>
-        </ul>
-
-        <ul class="nav justify-content-end footer-top__nav">
-          <li class="nav-item" v-for="(item, i) in navTopItems" :key="i">
-            <a class="nav-link" :href="item.url" v-if="item.span !== 'phone'">{{item.text}}</a>
-            <a class="nav-link footer-top__nav__phone" :href="item.url" v-else>{{item.text}}</a>
-          </li>
-        </ul>
-      </div> -->
       <div class="footer-bottom">
         <ul class="nav justify-content-end footer-bottom__navbar">
             <b-nav-item v-scroll-to="'#values'">Giá trị</b-nav-item>
@@ -31,12 +16,11 @@
         <ul class="nav justify-content-end footer-bottom__social__nav">
           <li class="nav-item" v-for="(item, i) in navSocialLinks" :key="i">
             <a class="nav-link" :href="item.url">
-              <!-- <img :src="item.img" :alt="item.text" /> -->
               {{item.text}}
             </a>
           </li>
         </ul>
-        <img class="footer__logo" src="../../assets/footer/footer-logo.png" alt="footer logo"/>
+        <img class="footer__logo" src="../../assets/footer/footer-logo.svg" alt="footer logo"/>
       </div>
     </div>
   </div>

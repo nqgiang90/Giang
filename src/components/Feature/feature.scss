@@ -41,6 +41,7 @@
   .feature__buttons {
     margin-top: 50px;
     .btn {
+      font-weight: 700;
       margin-bottom: 10px;
       &:first-child {
         margin-right: 20px;
@@ -51,6 +52,20 @@
 @media (max-width: 768px) {
   .feature{
     padding-top: 30px;
+  }
+  .feature__mobile__items {
+    margin-bottom: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    img {
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      @include fontSize(25px);
+      text-align: center;
+    }
   }
   .media {
     padding-top: 20px;

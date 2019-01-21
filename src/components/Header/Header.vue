@@ -4,18 +4,24 @@
       <b-navbar toggleable="md" :fixed="'top'">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-        <router-link to="/" class="navbar-brand"><img src="../../assets/logo.png" alt="AI Call logo"><span>VBEE</span> AI Call Center</router-link>
-        <!-- <b-navbar-brand href="/">
-          <img src="../../assets/logo.png" alt="AI Call logo">
-          <span>AI</span> Call Center
-        </b-navbar-brand> -->
+        <router-link to="/" class="navbar-brand"><img src="../../assets/logo.svg" alt="AI Call logo"><span>VBEE</span> AI Call Center</router-link>
 
         <b-collapse is-nav id="nav_collapse">
           <b-navbar-nav class="mx-auto"> 
-            <b-nav-item v-scroll-to="'#values'">Giá trị</b-nav-item>
-            <b-nav-item v-scroll-to="'#feature'">Tính năng</b-nav-item>
-            <b-nav-item v-scroll-to="'#carousel'">Lĩnh vực</b-nav-item>
-            <b-nav-item v-scroll-to="'#partners'">Đối tác</b-nav-item>
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <router-link to="/#values" v-scroll-to="'#values'" :class="['nav-link']">Giá trị</router-link>
+              </li>
+              <li class="nav-item">
+               <router-link to="/#feature" v-scroll-to="'#feature'" :class="['nav-link']">Tính năng</router-link>
+              </li>
+              <li class="nav-item">
+               <router-link to="/#carousel" v-scroll-to="'#carousel'" :class="['nav-link']">Lĩnh vực</router-link>
+              </li>
+              <li class="nav-item">
+               <router-link to="/#partners" v-scroll-to="'#partners'" :class="['nav-link']">Đối tác</router-link>
+              </li>
+            </ul>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
@@ -42,7 +48,7 @@
     <div class="mobile_navbar">
         <div class="row">
           <div class="col">
-            <!-- <Slide width="100">
+            <Slide width="100">
               <a id="giatri" v-scroll-to="'#values'">
                 <span>Giá trị</span>
               </a>
@@ -55,10 +61,9 @@
               <a id="doitac" v-scroll-to="'#partners'">
                 <span>Đối tác</span>
               </a>
-            </Slide> -->
+            </Slide>
           </div>
-
-          <div class="col">          
+          <div class="col">   
               <router-link to="/" class="navbar-brand mx-auto"><img src="../../assets/logo.png" alt="AI Call logo"></router-link>
           </div>
 
@@ -81,7 +86,13 @@ export default {
   name: "Header",
   components: {
     Slide
+  },
+  data() {
+    return {
+      routePath : this.$route.path
+    }
   }
+
 };
 </script>
 

@@ -15,6 +15,7 @@
 
   .media .media-body {
     @include fontSize(19px);
+    font-weight: 300;
 
     h5 {
       @include fontSize(29px);
@@ -35,19 +36,17 @@
   }
 
   @media (max-width: 768px) {
-    .media{
-      display: flex;
-      align-items: center !important;
-  
-      .media-body {
-        text-align: justify;
-        h5 {
-          margin-bottom: 15px;
-          text-align: left;
-          @include fontSize(24px);
-        }
+    .values__content__text {
+      text-align: justify;
+      font-weight: 300;
+      @include fontSize(16px);
+      
+      h5 {
+        margin-bottom: 15px;
+        text-align: left;
+        @include fontSize(24px);
+        font-weight: 700;
       }
     }
-  
   }
 }

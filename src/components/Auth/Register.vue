@@ -131,6 +131,11 @@ export default {
         } else {
           me.showErrors = false;
           me.showSuccess = true;
+          let formGroups = me.$el.querySelectorAll('.form-group');
+          for (let i of formGroups) {
+            i.style.display = "none";
+          }
+          me.$el.querySelector('.btn_register').style.display = "none";  
         }
       })
     },
@@ -149,6 +154,9 @@ export default {
         this.show = true;
       });
     }
+  },
+  mounted(){
+
   }
 };
 </script>
