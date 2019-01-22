@@ -56,15 +56,15 @@
       &:last-child {
         margin-right: 0;
       }
-    }
 
-    .nav-link {
-      padding-top: 26px;
-      padding-bottom: 26px;
-     
-      &:hover {
-        background: #ffdcb0;
-        border-bottom: 1px solid black;
+      .nav-link {
+        padding-top: 26px;
+        padding-bottom: 26px;
+       
+        &:hover {
+          background: #ffdcb0;
+          border-bottom: 1px solid black;
+        }
       }
     }
   }

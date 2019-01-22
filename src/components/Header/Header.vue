@@ -25,7 +25,7 @@
 
           <b-nav-form right :class="['navbar__form', 'justify-content-center']">
             <a href="https://cp.aicallcenter.vn/">Đăng nhập</a>
-            <router-link to="register" :class="['btn', 'navbar__form__btn__register']">Đăng ký</router-link>
+            <router-link to="register" :class="['btn', 'navbar__form__btn__register', 'nav-link']">Đăng ký</router-link>
           </b-nav-form>
 
         </b-collapse>
