@@ -2,7 +2,7 @@
   <div class="carousel" id="carousel">
   <div class="container">
   <h1>Lĩnh vực sử dụng</h1>
-  <swiper ref="mySwiper">
+  <swiper ref="mySwiper" :options="swiperOption">
     <swiper-slide v-for="(item, i) in list" :key="i">
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-12 col-lg-6 carousel__text">
@@ -23,8 +23,9 @@
         </div>
       </div>
     </swiper-slide>
-    <!-- <div class="swiper-button-prev" slot="button-prev"></div>
-    <div class="swiper-button-next" slot="button-next"></div> -->
+    <div class="swiper-pagination" slot="pagination"></div>
+     <div class="swiper-button-prev" slot="button-prev"></div>
+    <div class="swiper-button-next" slot="button-next"></div>
   </swiper>
     </div>
   </div>
@@ -36,6 +37,24 @@ export default {
   data() {
     return {
       dialogVisible: false,
+        swiperOption: {
+            // watchOverflow:true,
+            grabCursor:true,
+            loop:true,
+            centeredSlides: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false
+            },pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                watchOverflow:true,
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            }
+            },
       list: [
         {
           title: "Thương mại điện tử, shop online",
