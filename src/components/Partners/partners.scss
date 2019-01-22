@@ -1,3 +1,4 @@
+$border-color: #aaa;
 .partners {
   margin: 80px auto;
   padding-top: 54px;
@@ -6,13 +7,108 @@
     margin-bottom: 40px;
   }
 
-  img {
-    width: 80%;
-  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+    text-align: center;
+    margin: 0 -1px -1px 0;
 
-  @media (max-width: 767.98px) {
-    img {
-      width: 100%;
+    li {
+      display: flex;
+      height: 178px;
+      flex: 1 0 50%;
+      justify-content: space-around;
+      align-items: center;
+ 
+      img {
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .partners {
+    ul {
+      li {
+        &:nth-child(odd)  {
+          border-right: 1px solid $border-color;
+          border-bottom: 1px solid $border-color;
+        }
+  
+        &:nth-child(even)  {
+          border-bottom: 1px solid $border-color;
+        }
+  
+        &:nth-child(n + 15) {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .partners {
+    ul {
+      li {
+        flex: 1 0 21%;
+
+        img {
+          width: 60%;
+        }
+
+        &:nth-child(n)  {
+          border-top: 1px solid $border-color;
+        }
+  
+        &:nth-child(n + 1) {
+          border-right: 1px solid $border-color;
+        }
+  
+        &:nth-child(4n) {
+          border-right: 0;
+        }
+        
+        &:nth-child(-n + 4) {
+          border-top: 0;
+        }
+      }
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .partners {
+    ul {
+      li {
+        height: 178px;
+        flex: 1 0 21%;
+   
+        img {
+          width: 70%;
+        }
+  
+        &:nth-child(n)  {
+          border-top: 1px solid $border-color;
+        }
+  
+        &:nth-child(n + 1) {
+          border-right: 1px solid $border-color;
+        }
+  
+        &:nth-child(4n) {
+          border-right: 0;
+        }
+        
+        &:nth-child(-n + 4) {
+          border-top: 0;
+        }
+      }
     }
   }
 }
