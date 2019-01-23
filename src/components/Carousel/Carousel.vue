@@ -71,7 +71,7 @@ export default {
           img: require("../../assets/carousel/finance.svg")
         },
         {
-          title: "Logistic",
+          title: "Giao vận",
           text:
             "AI Call Center tự động gọi điện thông báo lịch trình giao hàng. Khách hàng có thể tuỳ chọn xác nhận, huỷ bằng phím bấm hoặc kết nối đến tổng đài viên nếu cần thiết.",
           readMoreLink: "#",
