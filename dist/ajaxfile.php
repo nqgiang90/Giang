@@ -40,7 +40,17 @@ function detect_number($number) {
     '0167' => 'Viettel',
     '0168' => 'Viettel',
     '0169' => 'Viettel',
+	'032' => 'Viettel',
+    '033' => 'Viettel',
+    '034' => 'Viettel',
+    '035' => 'Viettel',
+    '036' => 'Viettel',
+    '037' => 'Viettel',
+    '038' => 'Viettel',
+    '039' => 'Viettel',
+	'086' => 'Viettel',
 
+	'089'  => 'Mobifone',
     '090'  => 'Mobifone',
     '093'  => 'Mobifone',
     '0120' => 'Mobifone',
@@ -48,7 +58,13 @@ function detect_number($number) {
     '0122' => 'Mobifone',
     '0126' => 'Mobifone',
     '0128' => 'Mobifone',
+	'070' => 'Mobifone',
+    '079' => 'Mobifone',
+    '077' => 'Mobifone',
+    '076' => 'Mobifone',
+    '078' => 'Mobifone',
 
+	'088'  => 'Vinaphone',
     '091'  => 'Vinaphone',
     '094'  => 'Vinaphone',
     '0123' => 'Vinaphone',
@@ -56,6 +72,11 @@ function detect_number($number) {
     '0125' => 'Vinaphone',
     '0127' => 'Vinaphone',
     '0129' => 'Vinaphone',
+	'083' => 'Vinaphone',
+    '084' => 'Vinaphone',
+    '085' => 'Vinaphone',
+    '081' => 'Vinaphone',
+    '082' => 'Vinaphone',
 
     '0993' => 'Gmobile',
     '0994' => 'Gmobile',
@@ -63,17 +84,20 @@ function detect_number($number) {
     '0996' => 'Gmobile',
     '0997' => 'Gmobile',
     '0199' => 'Gmobile',
+	'059' => 'Gmobile',
 
     '092'  => 'Vietnamobile',
     '0186' => 'Vietnamobile',
     '0188' => 'Vietnamobile',
+	'056' => 'Vietnamobile',
+    '058' => 'Vietnamobile',
 
     '095'  => 'SFone'
 	);
     $number = str_replace(array('-', '.', ' '), '', $number);
 
     // $number is not a phone number
-    if (!preg_match('/^(01[2689]|09)[0-9]{8}$/', $number)) return false;
+    if (!preg_match('/^(03|07|08|05|01[2689]|09)[0-9]{8}$/', $number)) return false;
 
     // Store all start number in an array to search
     $start_numbers = array_keys($carriers_number);
@@ -128,6 +152,10 @@ if (!filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
 //   if($row_cnt > 0) {
 // 	  $result['err'][] = 'Email đã tồn tại';
 //   }	
+
+if (!empty($result['err'])) {
+	print_r(json_encode($result));
+} else {
 	$name = $data->name;
 	  $email = $data->email;
 	  $phone = $data->phone;
@@ -143,7 +171,8 @@ if (!filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
 		  $message .= "SĐT : $phone \n";
 	
    sendMessage($chatid, $message, $token);
-	var_dump($message);
+   var_dump($message);
+}
 	
 //   if(count($result['err']) > 0) {
 // 	  print_r(json_encode($result));
