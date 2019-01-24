@@ -242,6 +242,7 @@ export default {
       })
       .then(function (response) {
         me.show_text_retry= true;
+        
       })
     }
   }

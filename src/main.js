@@ -12,6 +12,9 @@ import router from './router'
 import responsive from 'vue-responsive';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+import { loadProgressBar } from 'axios-progress-bar'
+import 'axios-progress-bar/dist/nprogress.css'
+loadProgressBar();
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 Vue.use(responsive);
