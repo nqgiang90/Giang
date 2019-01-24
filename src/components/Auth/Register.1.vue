@@ -2,19 +2,36 @@
   <div class="register">
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-7 register__section">
-          <h1>{{heading_text}}</h1>
-          <h3>{{heading_sub_text}}</h3>
-          <div class="success" v-if="showSuccess">
-              <p class="text-success">{{success_message}}</p>
-          </div>
-          <div class="register__box" v-if="show_register">
-            
-            <b-form @submit="onSubmit" @reset="onReset">
+        <div class="col-xs-12 col-sm-12 col-md-7 otp__box" v-if="0">
+          <h1>Chỉ còn một bước nữa!</h1>
+          <h3>Bảo mật của bạn là ưu tiên của chúng tôi</h3>
+          <b-form @submit="onOtpSubmit" @reset="onOtpReset">
+            <p>Chúng tôi vừa gửi mã xác nhận (OTP) tới số thuê bao của bạn, vui lòng nhập dưới đây.</p>
+            <p><span>Chưa nhận được? <a href="#">Gửi lại</a></span></p>
+            <b-form-input
+                id="otp_code"
+                type="text"
+                v-model="form_otp.otp_code"
+                required
+                placeholder="Nhập mã OTP"
+            ></b-form-input>
+            <span class="otp_errors" v-if="showOtpErrors">Mã OTP không đúng</span>
+            <div class="btn_submit_otp_wrap">
+              <b-button type="submit" class="btn_submit_otp">Xác nhận</b-button>
+            </div>
+          </b-form>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-7 register__box" v-if="1">
+          <h1>Đăng ký AI Call Center</h1>
+          <h3>Trải nghiệm tổng đài tự động</h3>
+          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <div class="error" v-if="showErrors">
               <ul v-if="showErrors">
                 <li v-for="(item, i) in errs" :key="i">{{item}}</li>
               </ul>
+            </div>
+            <div class="success" v-else-if="showSuccess">
+              <p class="text-success">Cám ơn bạn đã đăng ký sử dụng AI Call Center, Bộ phận chăm sóc khách hàng của chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất.</p>
             </div>
             <b-form-group
               id="tenTongDai"
@@ -81,31 +98,11 @@
            
             <b-button type="submit" class="btn_register">Đăng ký</b-button>
           </b-form>
-          </div>
-
-          <div class="otp__box" v-if="show_otp">
-            <b-form @submit="onOtpSubmit" @reset="onOtpReset">    
-              <p>Chúng tôi vừa gửi mã xác nhận (OTP) tới số thuê bao của bạn, vui lòng nhập dưới đây.</p>
-              <p><span>Chưa nhận được? <a href="" @click.prevent="resendOTP()">Gửi lại</a></span></p>
-              <p class="otp_retry text-center" v-if="show_text_retry">Hệ thống đã gửi lại bạn mã OTP mới !</p>
-              <b-form-input
-                  id="otp_code"
-                  type="text"
-                  v-model="form.otp_code"
-                  required
-                  placeholder="Nhập mã OTP"
-              ></b-form-input>
-              <span class="otp_errors" v-if="showOtpError">{{otp_error}}</span>
-              <div class="btn_submit_otp_wrap">
-                <b-button type="submit" class="btn_submit_otp">Xác nhận</b-button>
-              </div>
-            </b-form>
-          </div>
         </div>
+
         <div class="col-xs-12 col-sm-12 col-md-5">
           <img src="../../assets/register/robo.png" alt="" class="img-fluid"/>
         </div>
-        
       </div>
     </div>
   </div>
@@ -118,29 +115,24 @@ export default {
   name: "Register",
   data() {
     return {
-      heading_text: "Đăng ký AI Call Center",
-      heading_sub_text: "Trải nghiệm tổng đài tự động",
-      success_message: "Cám ơn bạn đã đăng ký sử dụng AI Call Center, Bộ phận chăm sóc khách hàng của chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất.",
-      show_register: true,
-      show_otp: false,
-
       form: {
         email: "",
         name: "",
         phone: "",
         name_congty: "",
         name_tongdai: "",
-        user_id: 0,
+        user_id: 0
+      },
+      form_otp: {
         otp_code: ""
       },
       show: true,
       showErrors: false,
       showSuccess: false,
       errs: [],
-      otp_error: '',
-      showOtpError: false,
-      show_text_retry: false,
-      };
+      showOtpErrors: false,
+      otp_errs : ''
+    };
   },
   methods: {
     onSubmit(evt) {
@@ -156,16 +148,12 @@ export default {
       })
       .then(function (response) {
         if(response.data.hasOwnProperty('err')) {
+          me.showSuccess = false;
           me.showErrors = true;
           me.errs = [];
           me.errs.push(...response.data.err);
         } else {
           me.showErrors = false;
-          me.show_register = false;
-          me.heading_text = "Chỉ còn một bước nữa!";
-          me.heading_sub_text = "Bảo mật của bạn là ưu tiên của chúng tôi";
-          me.show_otp = true;
-          
           //me.showSuccess = true;
           //let formGroups = me.$el.querySelectorAll('.form-group');
           // for (let i of formGroups) {
@@ -195,54 +183,32 @@ export default {
       evt.preventDefault();
       axios.post('ajaxfile.php', {
         request: 3,
-        otp_code: parseInt(this.form.otp_code),
-        tongdai: this.form.name_tongdai,
-        congty: this.form.name_congty,
-        name: this.form.name,
-        email: this.form.email,
-        phone: this.form.phone
+        otp_code: this.form_otp.otp_code,
       })
       .then(function (response) {
-        if(response.data === 0) {
-          me.showOtpError = true;
-          me.show_text_retry = false;
-          me.otp_error = 'Mã OTP không đúng !';
-        } else if(response.data === 3) {
-          me.showOtpError = true;
-          me.show_text_retry = false;
-          me.otp_error = 'Mã OTP đã hết hạn !';
-        } else if(response.data === 1) {
-          me.showOtpError = false;
-          me.show_text_retry = false;
-          me.otp_error = '';
-          me.show_otp= false;
-          me.heading_text= "Đăng ký AI Call Center";
-          me.heading_sub_text= "Trải nghiệm tổng đài tự động";
-          me.showSuccess=true;
-          
+        if(response.data.hasOwnProperty('err')) {
+          //me.showSuccess = false;
+          me.showOtpErrors = true;
+          me.otp_errs = '';
+          me.otp_errs = response.data.otp_err;
         }
+        // } else {
+        //   me.showErrors = false;
+        //   me.showSuccess = true;
+        //   let formGroups = me.$el.querySelectorAll('.form-group');
+        //   for (let i of formGroups) {
+        //     i.style.display = "none";
+        //   }
+        //   me.$el.querySelector('.btn_register').style.display = "none";  
+        // }
       })
     },
     onOtpReset(evt) {
       evt.preventDefault();
       /* Reset our form values */
-      this.form.otp_code = "";
+      this.form_otp.otp_code = "";
       /* Trick to reset/clear native browser form validation state */
-      this.showOtpError = false
-    },
-    resendOTP(evt) {
-      let me = this;
-      axios.post('ajaxfile.php', {
-        request: 4,
-        tongdai: this.form.name_tongdai,
-        congty: this.form.name_congty,
-        name: this.form.name,
-        email: this.form.email,
-        phone: this.form.phone
-      })
-      .then(function (response) {
-        me.show_text_retry= true;
-      })
+      this.showOtpErrors = false
     }
   }
 };

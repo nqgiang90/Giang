@@ -1,6 +1,6 @@
 .register {
-  padding-top: 54px;
-  padding-bottom: 54px;
+  padding-top: 60px;
+  padding-bottom: 60px;
 
   h1, h3 {
     color: #000;
@@ -51,5 +51,65 @@
     .register__box {
       margin-bottom: 20px;
     }
+  }
+}
+
+.otp__box {
+  h1 {
+    font-weight: 700;
+  }
+
+  h3, p {
+    @include fontSize(16px);
+  }
+
+  p {
+    > span {
+      font-size: 12px;
+      font-style: italic;
+
+      a {
+        font-style: normal;
+      }
+    }
+  }
+
+  input#otp_code {
+    width: 251px;
+    height: 50px;
+    margin: 40px auto 20px auto;
+    border-color: #E5E5E5;
+    border-radius: 0;
+    text-align: center;
+    color: #838383;
+  }
+
+  .btn_submit_otp_wrap {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .btn_submit_otp {
+    text-align: center;
+    background: #ff8a00;
+    color: #fff;
+    border-color: #ff8a00;
+    border-radius: 0;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .otp_errors {
+    color: red;
+    text-align: center;
+    @include fontSize(14px);
+    display: block;
+    // margin-bottom: 15px;
+  }
+
+  .otp_retry {
+    @include fontSize(14px);
+    color: green;
   }
 }
