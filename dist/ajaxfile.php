@@ -265,7 +265,8 @@ if($request == 4){
 		  $sendOTPStatus = sendOTPMessage($phone, $messaggio, $token);
   		  $sendOTPStatus = json_decode($sendOTPStatus);
 
-		  if(isset($sendOTPStatus->call_id) || $sendOTPStatus->call_id != "") {
+
+		  if(isset($sendOTPStatus->call_id)) {
   			$retry_status = 1;
   		  } else {
   			$retry_status = 2;
