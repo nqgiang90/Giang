@@ -11,11 +11,7 @@
           <div class="register__box" v-if="show_register">
             
             <b-form @submit="onSubmit" @reset="onReset" oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
-            <div class="error" v-if="showErrors">
-              <ul v-if="showErrors">
-                <li v-for="(item, i) in errs" :key="i">{{item}}</li>
-              </ul>
-            </div>
+
             <b-form-group
               id="tenTongDai"
               label="Tên tổng đài:"
@@ -107,16 +103,20 @@
                 name="up2"
               ></b-form-input>
             </b-form-group>
-           
+           <div class="error" v-if="showErrors">
+              <ul v-if="showErrors">
+                <li v-for="(item, i) in errs" :key="i">{{item}}</li>
+              </ul>
+            </div>
             <b-button type="submit" class="btn_register">Đăng ký</b-button>
           </b-form>
           </div>
 
           <div class="otp__box" v-if="show_otp">
             <b-form @submit="onOtpSubmit" @reset="onOtpReset">    
-              <p>Chúng tôi sẽ gọi điện đến số điện thoại của bạn để đọc mã xác nhận (OTP), bạn vui lòng nghe máy.</p>
+              <p>Chúng tôi sẽ gọi điện đến số thuê bao <b>{{form.phone}}</b> của bạn để đọc mã xác nhận (OTP), bạn vui lòng nghe máy.</p>
               <p><span>Chưa nhận được? <a href="" @click.prevent="resendOTP()">Gửi lại</a></span></p>
-              <p class="otp_retry text-center" v-if="show_text_retry">Hệ thống đã gửi lại bạn mã OTP mới !</p>
+              <p class="otp_retry text-center" v-if="show_text_retry">Hệ thống đã thực hiện cuộc gọi để gửi lại bạn mã OTP mới !</p>
               <b-form-input
                   id="otp_code"
                   type="text"
