@@ -3,6 +3,7 @@ session_set_cookie_params(600);
 session_start();
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
+include 'functions.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
@@ -26,7 +27,6 @@ function sendMessage($chatID, $messaggio, $token) {
 
 function sendOTPMessage($phone, $messaggio, $token) {
     //echo $messaggio . "\n";
-	
 	$url = "https://api-dev.vbeecore.com/api/ezcall/call_out?phone=".$phone."&account_id=16&input_text=".urlencode($messaggio)."&token=".$token;
 	//print_r($url); die;
     $ch = curl_init();
@@ -133,139 +133,102 @@ function detect_number($number) {
 }
 
 // Add record
-if($request == 2){
+if($request == 2) {
 
-  $token = "767334988:AAGcY-DXflkxxeto4cpyWSg3n4bPLCZYTSw";
-  $chatid = "-251898214";
   $message = '';
   $result = array();
   $result['err'] = array();
-  $result['success'] = array();
+  $checkUserData = "";
   
   if(!detect_number($data->phone)) {
-	  $result['err'][] = 'Số điện thoại không hợp lệ';
+	$result['err'][] = 'Số điện thoại không hợp lệ';
+  }
+  else if (!filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
+	$result['err'][] = 'Email không đúng định dạng';
+  }
+  $url = "https://cp-dev.aicallcenter.vn/api/check?username=".$data->phone."&email=".$data->email."&phone=".$data->phone;
+  $ch = curl_init();
+  $optArray = array(
+	   CURLOPT_URL => $url,
+	   CURLOPT_RETURNTRANSFER => true
+  );
+  curl_setopt_array($ch, $optArray);
+  $check_result = curl_exec($ch);
+  curl_close($ch);
+
+  $check_result = json_decode($check_result);
+
+  if ($check_result->error_code != 0) {
+  	$result['err'][] = $check_result->error_msg;
   }
   
-  //$stmt = $con->prepare("SELECT * FROM users WHERE phone = ?");
-//  $stmt->bind_param("s", $data->phone);
-//   $stmt->execute();
-//   $stmt->store_result();
-  
-//   $row_cnt = $stmt->num_rows;
-  
-//   if($row_cnt > 0) {
-// 	  $result['err'][] = 'Số điện thoại đã tồn tại';
-//   }
-  
-		
-if (!filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
-	$result['err'][] = 'Email không đúng định dạng';
-} 
+  if (!empty($result['err'])) {
+  	print_r(json_encode($result));
+  	exit;
+  } else {
+  	unset($result['err']);
+  	$username = $data->phone;
+  	$name = $data->name;
+  	$email = $data->email;
+  	$phone = $data->phone;
+  	$congty = $data->congty;
+  	$tongdai = $data->tongdai;
+  	$password = $data->password;
+  	$time = date("H:i:s A d-m-Y");
 
-//   $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
-//   $stmt->bind_param("s", $data->email);
-//   $stmt->execute();
-//   $stmt->store_result();
-  
-//   $row_cnt = $stmt->num_rows;
-  
-//   if($row_cnt > 0) {
-// 	  $result['err'][] = 'Email đã tồn tại';
-//   }	
+  	$otp_key = rand(1000,9999);//tạo random mã OTP với 4 số
 
-if (!empty($result['err'])) {
-	print_r(json_encode($result));
-} else {
-	$name = $data->name;
-	  $email = $data->email;
-	  $phone = $data->phone;
-	  $congty = $data->congty;
-	  $tongdai = $data->tongdai;
-	  $time = date("H:i:s A d-m-Y");
-	  $_SESSION['tongdai'] = $tongdai;
-	  $_SESSION['congty'] = $congty;
-	  $_SESSION['email'] = $email;
-	  $_SESSION['user_name'] = $name;
-	  $_SESSION['user_phone'] = $phone;
-	  $_SESSION['otp_id'] = mt_rand(100000,999999);//tạo random OTP_ID với 6 số
-	  $_SESSION['otp_key'] = rand(1000,9999);//tạo random mã OTP với 4 số
-	  
-		if(isset($_SESSION['otp_key']) && $_SESSION['otp_key'] != "") {
-			$token = 'kgtypEVLYLVTHiknplNLpgMob9N2omuMHZkZcfdpZuNaVunyopX10aSZOgPtYTa+LNyHyJe1w4V0Zdyg23YuAw==';
-			$otp_key = implode(' ',str_split($_SESSION['otp_key'])); 
-			$messaggio = 'Xin cảm ơn '.$_SESSION['user_name'].' đã đăng ký dịch vụ tổng đài AI Call Center. Mã âu ti pi của bạn là: '.$otp_key.' . Nhắc lại : '.$otp_key.', Xin cảm ơn.';
-			sendOTPMessage($_SESSION['user_phone'], $messaggio, $token);
-		}
-
-		  //$message = "Thông tin khách hàng đăng ký qua trang chủ \n";
-		  //$message .= "Thời gian : $time \n \n";
-		  //$message .= "Tên tổng đài : $tongdai \n";
-		  //$message .= "Tên công ty : $congty \n";
-		  //$message .= "Họ tên : $name \n";
-		  //$message .= "Email : $email \n";
-		  //$message .= "SĐT : $phone \n";
-	
-   //sendMessage($chatid, $message, $token);
-   //var_dump($message);
-}
-	
-//   if(count($result['err']) > 0) {
-// 	  print_r(json_encode($result));
-//   } else {
-// 	  $stmt = $con->prepare("INSERT INTO users (name, email, phone, congty, tongdai) VALUES (?, ?, ?, ?, ?)");
-// 	  $stmt->bind_param("sssss", $name, $email, $phone, $congty, $tongdai);
-	  
-// 	  $name = $data->name;
-// 	  $email = $data->email;
-// 	  $phone = $data->phone;
-// 	  $congty = $data->congty;
-// 	  $tongdai = $data->tongdai;
-
-// 	  $sql = $stmt->execute();
-	  
-// 	  if ($sql) {
-// 		  $time = date("H:i:s A d-m-Y");
-// 		  $message .= "Thông tin khách hàng đăng ký qua trang chủ \n";
-// 		  $message .= "Thời gian : $time \n \n";
-// 		  $message .= "Tên tổng đài : $tongdai \n";
-// 		  $message .= "Tên công ty : $congty \n";
-// 		  $message .= "Họ tên : $name \n";
-// 		  $message .= "Email : $email \n";
-// 		  $message .= "SĐT : $phone \n";
-// 	  }
-// 	  sendMessage($chatid, $message, $token);
-//   }
-  
-  
-// $stmt->close();
-// $con->close();
-  exit;
+  	$token = 'kgtypEVLYLVTHiknplNLpgMob9N2omuMHZkZcfdpZuNaVunyopX10aSZOgPtYTa+LNyHyJe1w4V0Zdyg23YuAw==';
+  	$_SESSION['otp_key'] = $otp_key;
+  	$otp_key = implode(' ',str_split($otp_key)); 
+  	$messaggio = 'Xin cảm ơn '.$name.' đã đăng ký dịch vụ tổng đài AI Call Center. Mã âu ti pi của bạn là: '.$otp_key.' . Nhắc lại : '.$otp_key.', Xin cảm ơn.';
+  	sendOTPMessage($phone, $messaggio, $token);
+  	print_r(json_encode($result));
+  	exit;
+  }
 }
 
 if($request == 3){
 	$otp_status = 0;
 	$otp_code = $data->otp_code;
-	if (isset($_SESSION['otp_key']) && $_SESSION['otp_key'] != "") {
+	if (isset($_SESSION['otp_key'])) {
 		if(intval($_SESSION['otp_key']) === $otp_code) {
+			//print_r($_SESSION['otp_key']);
 			$otp_status = 1; // otp is right
 			$name = $data->name;
 			$email = $data->email;
 			$phone = $data->phone;
 			$congty = $data->congty;
 			$tongdai = $data->tongdai;
+			$password = $data->password;
 			$time = date("H:i:s A d-m-Y");
+			$url = "https://cp-dev.aicallcenter.vn/api/register?username=".$phone."&password=".$password."&re_password=".$password."&name=".$name."&email=".$email."&phone=".$phone;
 			
-		  $message = "Thông tin khách hàng đăng ký qua trang chủ \n";
-		  $message .= "Thời gian : $time \n \n";
-		  $message .= "Tên tổng đài : $tongdai \n";
-		  $message .= "Tên công ty : $congty \n";
-		  $message .= "Họ tên : $name \n";
-		  $message .= "Email : $email \n";
-		  $message .= "SĐT : $phone \n";
-			$token = "767334988:AAGcY-DXflkxxeto4cpyWSg3n4bPLCZYTSw";
-			$chatid = "-251898214";
-		  sendMessage($chatid, $message, $token);
-			//print_r($message);
+			$ch = curl_init();
+			  $optArray = array(
+				   CURLOPT_URL => $url,
+				   CURLOPT_RETURNTRANSFER => true
+			  );
+  			curl_setopt_array($ch, $optArray);
+  			$save_result = curl_exec($ch);
+  			curl_close($ch);
+
+  			$save_result = json_decode($save_result);
+
+  			if ($save_result->error_code == 0) {
+  				// insert user successs, then send message to telegram
+			  $message = "Thông tin khách hàng đăng ký qua trang chủ \n";
+			  $message .= "Thời gian : $time \n \n";
+			  $message .= "Tên tổng đài : $tongdai \n";
+			  $message .= "Tên công ty : $congty \n";
+			  $message .= "Họ tên : $name \n";
+			  $message .= "Email : $email \n";
+			  $message .= "SĐT : $phone \n";
+				$token = "767334988:AAGcY-DXflkxxeto4cpyWSg3n4bPLCZYTSw";
+				$chatid = "-251898214";
+			  sendMessage($chatid, $message, $token);
+  			}
+		
 		} else {
 			$otp_status = 0; // wrong otp
 		}
@@ -273,26 +236,53 @@ if($request == 3){
 		$otp_status = 3; //expri session otp
 	}
 	echo $otp_status;
+	exit;
 }
 
 if($request == 4){
+	$retry_status = 0;
+	
 	$name = $data->name;
-	  $email = $data->email;
-	  $phone = $data->phone;
-	  $congty = $data->congty;
-	  $tongdai = $data->tongdai;
+	$username = $data->phone;
+  	$email = $data->email;
+  	$phone = $data->phone;
+  	$congty = $data->congty;
+  	$tongdai = $data->tongdai;
+  	$password = $data->password;
 	  
-	  $_SESSION['user_name'] = $name;
-	  $_SESSION['user_phone'] = $phone;
-	  $_SESSION['otp_id'] = mt_rand(100000,999999);//tạo random OTP_ID với 6 số
-	  $_SESSION['otp_key'] = rand(1000,9999);//tạo random mã OTP với 4 số
+	$otp_key = rand(1000,9999);//tạo random mã OTP với 4 số
 	  
-	  if(isset($_SESSION['otp_key']) && $_SESSION['otp_key'] != "") {
-			$token = 'kgtypEVLYLVTHiknplNLpgMob9N2omuMHZkZcfdpZuNaVunyopX10aSZOgPtYTa+LNyHyJe1w4V0Zdyg23YuAw==';
-			$otp_key = implode(' ',str_split($_SESSION['otp_key'])); 
-			$messaggio = 'Xin cảm ơn '.$_SESSION['user_name'].' đã đăng ký dịch vụ tổng đài AI Call Center. Mã âu ti pi của bạn là: '.$otp_key.' . Nhắc lại : '.$otp_key.', Xin cảm ơn.';
-			sendOTPMessage($_SESSION['user_phone'], $messaggio, $token);
-		}
+	 $allow_send = 0;
+	  
+	  //retry first send
+	  if (!isset($_SESSION['RETRY'])) {
+		  $_SESSION['RETRY'] = time() + 60;
+		  $allow_send = 1;
+		  $token = 'kgtypEVLYLVTHiknplNLpgMob9N2omuMHZkZcfdpZuNaVunyopX10aSZOgPtYTa+LNyHyJe1w4V0Zdyg23YuAw==';
+		  $_SESSION['otp_key'] = $otp_key;
+		  $otp_key = implode(' ',str_split($otp_key)); 
+  	$messaggio = 'Xin cảm ơn '.$name.' đã đăng ký dịch vụ tổng đài AI Call Center. Mã âu ti pi của bạn là: '.$otp_key.' . Nhắc lại : '.$otp_key.', Xin cảm ơn.';
+		  $sendOTPStatus = sendOTPMessage($phone, $messaggio, $token);
+  		  $sendOTPStatus = json_decode($sendOTPStatus);
+
+		  if(isset($sendOTPStatus->call_id) || $sendOTPStatus->call_id != "") {
+  			$retry_status = 1;
+  		  } else {
+  			$retry_status = 2;
+  		  }
+	  } else { // check time to re-send after 60 seconds
+		  if (time() - $_SESSION['RETRY'] <= 0) {
+			$allow_send = 0;
+		  } else {
+			$allow_send = 1;
+			unset ($_SESSION["RETRY"]);
+		  }
+	  }
+	  
+	
+	  echo $retry_status;
+	  exit;
+	  
 }
 
 

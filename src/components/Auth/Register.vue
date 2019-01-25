@@ -10,7 +10,7 @@
           </div>
           <div class="register__box" v-if="show_register">
             
-            <b-form @submit="onSubmit" @reset="onReset">
+            <b-form @submit="onSubmit" @reset="onReset" oninput='up2.setCustomValidity(up2.value != up.value ? "Passwords do not match." : "")'>
             <div class="error" v-if="showErrors">
               <ul v-if="showErrors">
                 <li v-for="(item, i) in errs" :key="i">{{item}}</li>
@@ -78,6 +78,35 @@
                 placeholder="Số điện thoại"
               ></b-form-input>
             </b-form-group>
+
+            <b-form-group
+              id="password"
+              label="Mật khẩu:"
+              label-for="password"
+            >
+            <b-form-input
+                id="password"
+                type="password"
+                v-model="form.password"
+                required
+                placeholder="Mật khẩu"
+                name="up"
+              ></b-form-input>
+            </b-form-group>
+            
+            <b-form-group
+              id="password2"
+              label="Nhập lại mật khẩu:"
+              label-for="password2"
+            >
+            <b-form-input
+                id="password2"
+                type="password"
+                required
+                placeholder="Mật khẩu"
+                name="up2"
+              ></b-form-input>
+            </b-form-group>
            
             <b-button type="submit" class="btn_register">Đăng ký</b-button>
           </b-form>
@@ -85,7 +114,7 @@
 
           <div class="otp__box" v-if="show_otp">
             <b-form @submit="onOtpSubmit" @reset="onOtpReset">    
-              <p>Chúng tôi vừa gửi mã xác nhận (OTP) tới số thuê bao của bạn, vui lòng nhập dưới đây.</p>
+              <p>Chúng tôi sẽ gọi điện đến số điện thoại của bạn để đọc mã xác nhận (OTP), bạn vui lòng nghe máy.</p>
               <p><span>Chưa nhận được? <a href="" @click.prevent="resendOTP()">Gửi lại</a></span></p>
               <p class="otp_retry text-center" v-if="show_text_retry">Hệ thống đã gửi lại bạn mã OTP mới !</p>
               <b-form-input
@@ -131,7 +160,8 @@ export default {
         name_congty: "",
         name_tongdai: "",
         user_id: 0,
-        otp_code: ""
+        otp_code: "",
+        password: "",
       },
       show: true,
       showErrors: false,
@@ -152,7 +182,8 @@ export default {
         congty: this.form.name_congty,
         name: this.form.name,
         email: this.form.email,
-        phone: this.form.phone
+        phone: this.form.phone,
+        password: this.form.password
       })
       .then(function (response) {
         if(response.data.hasOwnProperty('err')) {
@@ -165,13 +196,6 @@ export default {
           me.heading_text = "Chỉ còn một bước nữa!";
           me.heading_sub_text = "Bảo mật của bạn là ưu tiên của chúng tôi";
           me.show_otp = true;
-          
-          //me.showSuccess = true;
-          //let formGroups = me.$el.querySelectorAll('.form-group');
-          // for (let i of formGroups) {
-          //   i.style.display = "none";
-          // }
-          // me.$el.querySelector('.btn_register').style.display = "none";  
         }
       })
     },
@@ -183,6 +207,7 @@ export default {
       this.form.name_congty = "";
       this.form.name_tongdai = "";
       this.form.phone = "";
+      this.form.password = "";
       this.form.checked = [];
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
@@ -200,7 +225,8 @@ export default {
         congty: this.form.name_congty,
         name: this.form.name,
         email: this.form.email,
-        phone: this.form.phone
+        phone: this.form.phone,
+        password: this.form.password
       })
       .then(function (response) {
         if(response.data === 0) {
@@ -238,11 +264,24 @@ export default {
         congty: this.form.name_congty,
         name: this.form.name,
         email: this.form.email,
-        phone: this.form.phone
+        phone: this.form.phone,
+        password: this.form.password
       })
       .then(function (response) {
-        me.show_text_retry= true;
-        
+        if(response.data === 0) {
+          me.showOtpError = true;
+          me.show_text_retry = false;
+          me.otp_error = 'Bạn cần chờ 1 phút giữa mỗi lần yêu cầu gửi lại mã OTP.';
+        }
+        else if(response.data === 2) {
+          me.showOtpError = true;
+          me.show_text_retry = false;
+          me.otp_error = 'Có lỗi xảy ra khi gửi mã OTP, bạn vui lòng thử lại sau vài phút';
+        }
+        else if(response.data === 1) {
+          me.showOtpError = false;
+          me.show_text_retry = true;
+        }
       })
     }
   }
