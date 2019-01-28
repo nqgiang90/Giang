@@ -181,7 +181,7 @@ if($request == 2) {
   	$token = 'kgtypEVLYLVTHiknplNLpgMob9N2omuMHZkZcfdpZuNaVunyopX10aSZOgPtYTa+LNyHyJe1w4V0Zdyg23YuAw==';
   	$_SESSION['otp_key'] = $otp_key;
   	$otp_key = implode(' ',str_split($otp_key)); 
-  	$messaggio = 'Xin cảm ơn '.$name.' đã đăng ký dịch vụ tổng đài AI Call Center. Mã âu ti pi của bạn là: '.$otp_key.' . Nhắc lại : '.$otp_key.', Xin cảm ơn.';
+  	$messaggio = 'Xin cảm ơn '.$name.' đã đăng ký dịch vụ tổng đài AI Call Center. "Mã" Ô-tê-pê của bạn là: '.$otp_key.' . Nhắc lại : '.$otp_key.', Xin cảm ơn.';
   	sendOTPMessage($phone, $messaggio, $token);
   	print_r(json_encode($result));
   	exit;
@@ -261,7 +261,7 @@ if($request == 4){
 		  $token = 'kgtypEVLYLVTHiknplNLpgMob9N2omuMHZkZcfdpZuNaVunyopX10aSZOgPtYTa+LNyHyJe1w4V0Zdyg23YuAw==';
 		  $_SESSION['otp_key'] = $otp_key;
 		  $otp_key = implode(' ',str_split($otp_key)); 
-  	$messaggio = 'Xin cảm ơn '.$name.' đã đăng ký dịch vụ tổng đài AI Call Center. Mã âu ti pi của bạn là: '.$otp_key.' . Nhắc lại : '.$otp_key.', Xin cảm ơn.';
+  	$messaggio = 'Xin cảm ơn '.$name.' đã đăng ký dịch vụ tổng đài AI Call Center. "Mã" Ô-tê-pê của bạn là: '.$otp_key.' . Nhắc lại : '.$otp_key.', Xin cảm ơn.';
 		  $sendOTPStatus = sendOTPMessage($phone, $messaggio, $token);
   		  $sendOTPStatus = json_decode($sendOTPStatus);
 
