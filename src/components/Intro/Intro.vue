@@ -5,8 +5,8 @@
       <div class="el-col-sm-12 el-col-xs-24 left-intro">
         <div class="intro__content">
           <h2>VBEE AI Call Center</h2>
-          <p>VBEE AI Call Center là giải pháp tích hợp vào các hệ thống tổng đài. Giải pháp chủ động giải quyết khối lượng lớn cuộc gọi có kịch bản trong thời gian ngắn. Hệ thống tổng đài sẽ hoạt động năng suất hơn, hiệu quả hơn và tiết kiệm chi phí.</p>
-          <a href="#" class="btn btn-normal btn-white">Đăng ký sử dụng</a>
+          <p>Vbee AI Call Center là giải pháp gọi ra ngoài tự động (outbound, voice broadcasting) dựa trên giọng nói trí tuệ nhân tạo Vbee), dễ dàng tích hợp vào các hệ thống tổng đài. Cho phép khách hàng tự  tạo chiến dịch gọi tự động theo kịch bản nhanh chóng, khác xa với các giải pháp thủ công trước đây.</p>
+          <router-link to="/register" :class="['btn', 'btn-normal', 'btn-white']">Đăng ký sử dụng</router-link>
         </div>
       </div>
       <div class="el-col-sm-12 el-col-xs-24 right-intro">

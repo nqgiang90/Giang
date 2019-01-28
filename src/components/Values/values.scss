@@ -27,10 +27,10 @@
 
   @media (max-width: 1600px) {
     .media .media-body {
-      @include fontSize(14px);
+      @include fontSize(20px);
   
       h5 {
-        @include fontSize(25px);
+        @include fontSize(29px);
       }
     }
   }
@@ -39,7 +39,7 @@
     .values__content__text {
       text-align: justify;
       font-weight: 300;
-      @include fontSize(16px);
+      @include fontSize(20px);
       
       h5 {
         margin-bottom: 15px;

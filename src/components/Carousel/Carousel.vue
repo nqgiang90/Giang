@@ -10,7 +10,7 @@
           <p>{{item.text}}</p>
 
           <div class="carousel__buttons">
-            <button class="btn text-uppercase btn__main btn__main__readmore">tìm hiểu thêm</button>
+            <router-link to="/register" :class="['btn', 'text-uppercase', 'btn__main', 'btn__main__readmore']">tìm hiểu thêm</router-link>
             <a
               class="btn text-uppercase btn__main btn__main__hotline"
               href="tel:0965277888"
