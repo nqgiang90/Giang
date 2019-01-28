@@ -146,7 +146,7 @@ if($request == 2) {
   else if (!filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
 	$result['err'][] = 'Email không đúng định dạng';
   }
-  $url = "https://cp-dev.aicallcenter.vn/api/check?username=".$data->phone."&email=".$data->email."&phone=".$data->phone;
+  $url = "https://cp.aicallcenter.vn/api/check?username=".$data->phone."&email=".$data->email."&phone=".$data->phone;
   $ch = curl_init();
   $optArray = array(
 	   CURLOPT_URL => $url,
@@ -202,7 +202,11 @@ if($request == 3){
 			$tongdai = $data->tongdai;
 			$password = $data->password;
 			$time = date("H:i:s A d-m-Y");
+<<<<<<< HEAD
 			$url = "https://cp-dev.aicallcenter.vn/api/register?username=".$phone."&password=".md5($password)."&re_password=".md5($password)."&name=".$name."&email=".$email."&phone=".$phone;
+=======
+			$url = "https://cp.aicallcenter.vn/api/register?username=".$phone."&password=".$password."&re_password=".$password."&name=".$name."&email=".$email."&phone=".$phone;
+>>>>>>> 635cb2c187c5f4161ee4f7c8f2af6b95953ec794
 			
 			$ch = curl_init();
 			  $optArray = array(
