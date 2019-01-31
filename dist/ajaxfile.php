@@ -202,7 +202,7 @@ if($request == 3){
 			$tongdai = $data->tongdai;
 			$password = $data->password;
 			$time = date("H:i:s A d-m-Y");
-			$url = "https://cp.aicallcenter.vn/api/register?username=".$phone."&password=".md5($password)."&re_password=".md5($password)."&name=".$name."&email=".$email."&phone=".$phone;
+			$url = "https://cp.aicallcenter.vn/api/register-home?username=".$phone."&password=".$password."&re_password=".$password."&name=".$name."&email=".$email."&phone=".$phone;
 			
 			$ch = curl_init();
 			  $optArray = array(
