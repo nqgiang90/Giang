@@ -7,7 +7,7 @@
           <h3>{{heading_sub_text}}</h3>
           <div class="success" v-if="showSuccess">
               <p class="text-success">{{success_message}}</p>
-              <p><a href="https://cp.aicallcenter.vn/dang-nhap">Đi tới trang đăng nhập</a></p>
+              <p><a href="https://cp.aicallcenter.vn/dang-nhap">Click vào đây để đăng nhập</a></p>
           </div>
           <div class="register__box" v-if="show_register">
             
