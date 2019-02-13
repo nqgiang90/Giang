@@ -206,7 +206,7 @@ if($request == 3){
 			//print_r($url); die;
 			$ch = curl_init();
 			  $optArray = array(
-				   CURLOPT_URL => $url,
+				   CURLOPT_URL => urlencode($url),
 				   CURLOPT_RETURNTRANSFER => true
 			  );
   			curl_setopt_array($ch, $optArray);
