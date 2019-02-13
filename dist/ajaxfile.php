@@ -226,7 +226,7 @@ if($request == 3){
 			  $message .= "SĐT : $phone \n";
 				$token = "767334988:AAGcY-DXflkxxeto4cpyWSg3n4bPLCZYTSw";
 				$chatid = "-251898214";
-			  //sendMessage($chatid, $message, $token);
+			  sendMessage($chatid, $message, $token);
   			}
 		
 		} else {
