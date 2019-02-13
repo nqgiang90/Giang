@@ -202,11 +202,11 @@ if($request == 3){
 			$tongdai = $data->tongdai;
 			$password = $data->password;
 			$time = date("H:i:s A d-m-Y");
-			$url = "https://cp.aicallcenter.vn/api/register-home?username=".$phone."&password=".$password."&re_password=".$password."&name=".$name."&email=".$email."&phone=".$phone;
+			$url = "https://cp.aicallcenter.vn/api/register-home?username=".$phone."&password=".$password."&re_password=".$password."&name=".urlencode($name)."&email=".$email."&phone=".$phone;
 			//print_r($url); die;
 			$ch = curl_init();
 			  $optArray = array(
-				   CURLOPT_URL => urlencode($url),
+				   CURLOPT_URL => $url,
 				   CURLOPT_RETURNTRANSFER => true
 			  );
   			curl_setopt_array($ch, $optArray);
