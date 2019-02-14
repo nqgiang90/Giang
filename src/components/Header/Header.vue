@@ -21,6 +21,9 @@
               <li class="nav-item">
                <router-link to="/#partners" v-scroll-to="'#partners'" :class="['nav-link']">Đối tác</router-link>
               </li>
+              <li class="nav-item">
+                  <router-link to="/#price" v-scroll-to="'#price'" :class="['nav-link']">Báo giá</router-link>
+              </li>
           </b-navbar-nav>
 
           <b-nav-form right :class="['navbar__form', 'justify-content-center']">
@@ -39,7 +42,7 @@
 export default {
   name: "Header",
   components: {
-    
+
   }
 };
 </script>

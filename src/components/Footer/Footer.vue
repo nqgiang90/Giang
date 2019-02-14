@@ -1,5 +1,51 @@
 <template>
   <div class="footer">
+    <div class="box-info-footer container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+          <h3>Tính năng</h3>
+          <p>Xây dựng chiến dịch tự động</p>
+          <p>Kịch bản đa lớp & cá nhân hóa</p>
+          <p>Giọng nói trí tuệ nhân tạo sinh ra từ văn bản</p>
+          <p>Báo cáo thống kê, phân tích chi tiết thời gian thực</p>
+          <p>Xử lý số liệu</p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <h3>Lĩnh vực sử dụng</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <p>Thương mại điện tử, shop online</p>
+              <p>Công ty dịch vụ tài chính</p>
+              <p>Logistic</p>
+              <p>Kinh doanh bất động sản</p>
+              <p>Bảo hiểm</p>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <p>Sức khỏe, y tế</p>
+              <p>Sự kiện, booking, du lịch</p>
+              <p>Nhà hàng ẩm thực</p>
+              <p>Dịch vụ tiện ích, truyền hình giải trí</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 col-12">
+          <div class="row">
+            <div class="col-lg-8 col-md-6 col-6 box-case-study" style="padding: 0;">
+              <h3>CASE STUDY</h3>
+              <p>Shopee</p>
+              <p>Haravan</p>
+              <p>Ford Việt Nam</p>
+              <p>VGS Media</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-6 box-more-info" style="padding: 0">
+              <h3>Báo giá</h3>
+              <h3>blog</h3>
+              <h3>liên hệ</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="box_call">
       <a href="tel:0965277888">
         <img src="../../assets/footer/call_btn.png" alt=""/>

@@ -7,7 +7,7 @@
          <img class="mr-3 img-fluid d-block mx-auto mb-4" :src="item.img" :alt="item.title">
          <div class="values__content__text">
            <h5>{{item.title}}</h5>
-           {{item.text}}
+           <p style="text-align: justify; font-size: 14px">{{item.text}}</p>
          </div>
        </div>
     </div>
@@ -17,7 +17,7 @@
           <img class="mr-3 img-fluid" :src="item.img" :alt="item.title">
           <div class="media-body">
             <h5>{{item.title}}</h5>
-            {{item.text}}
+            <p style="text-align: justify; font-size: 14px">{{item.text}}</p>
           </div>
         </div>
       </div>

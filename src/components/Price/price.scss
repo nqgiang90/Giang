@@ -1,7 +1,22 @@
+.box-content{
+  margin-bottom: 20px;
+}
+.btn-register-trial{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 25px 0;
+}
+.box-content-price{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
 .price {
   background-color: #fff1df;
   padding-top: 54px;
-  padding-bottom: 54px;
 
   .col {
     padding-right: 5px;
@@ -42,16 +57,20 @@
       background: #ffc888;
       width: 100%;
       height: 73px;
-      margin-bottom: 35px;
-      display: table;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
       p {
         display: table-cell;
         vertical-align: middle;
         width: 100%;
-        @include fontSize(23px);
+        @include fontSize(19.5px);
         font-weight: 700;
         text-align: center;
+        margin-bottom: 0;
       }
 
     }
@@ -81,4 +100,29 @@
       }
     }
   }
+}
+.btn__main__hotline1{
+  border: 1px solid #F36D25;
+  color: #F36D25;
+  font-weight: bold;
+  margin: 15px 30px ;
+}
+.btn__main__register{
+  background-color: #FF8A00;
+  color: #ffffff;
+  font-weight: bold;
+  margin: 15px 30px;
+}
+@media (min-width: 1200px) {
+  .el-col-lg-4{
+    width: 19.5%;
+  }
+}
+
+@media (max-width: 500px) {
+.row{
+  padding-left: 10px;
+  padding-right: 10px
+}
+
 }
