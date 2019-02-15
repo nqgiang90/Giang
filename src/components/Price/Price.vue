@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import micro_img from '../../assets/price/micro.png';
-import basic_img from '../../assets/price/basic.png';
-import advance_img from '../../assets/price/advance.png';
-import plus_img from '../../assets/price/plus.png';
-import premium_img from '../../assets/price/premium.png';
+import micro_img from '../../assets/price/micro.svg';
+import basic_img from '../../assets/price/basic.svg';
+import advance_img from '../../assets/price/advance.svg';
+import plus_img from '../../assets/price/plus.svg';
+import premium_img from '../../assets/price/premium.svg';
 
 export default {
   data() {
